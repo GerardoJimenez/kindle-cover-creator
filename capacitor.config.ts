@@ -1,9 +1,9 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'kindle-cover-creator',
-  webDir: 'www'
+  appId: 'com.sheldrapps.kindlecovercreator',
+  appName: 'Kindle Cover Creator',
+  webDir: 'www',
 };
 
 export default config;
