@@ -1,3 +1,13 @@
 {
-  "APP": { "TITLE": "Creador de portadas para Kindle" }
+  "APP": { "TITLE": "Creador de portadas para Kindle" },
+  "TABS": {
+    "SETTINGS": "Configuración",
+    "CREATIONS": "Creaciones",
+    "CREATE": "Crear"
+  },
+  "SETTINGS": {
+    "TITLE": "Configuración",
+    "LANGUAGE": "Idioma",
+    "PRIVACY_OPTIONS": "Opciones de privacidad"
+  }
 }

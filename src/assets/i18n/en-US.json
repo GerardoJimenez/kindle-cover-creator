@@ -1,3 +1,13 @@
 {
-  "APP": { "TITLE": "Kindle Cover Creator" }
+  "APP": { "TITLE": "Kindle Cover Creator" },
+  "TABS": {
+    "SETTINGS": "Settings",
+    "EXPORTS": "Exports",
+    "CREATE": "Create"
+  },
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "LANGUAGE": "Language",
+    "PRIVACY_OPTIONS": "Privacy options"
+  }
 }

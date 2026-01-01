@@ -7,6 +7,22 @@ export const routes: Routes = [
   },
   {
     path: 'settings',
-    loadComponent: () => import('./pages/settings/settings.page').then( m => m.SettingsPage)
+    loadComponent: () =>
+      import('./pages/settings/settings.page').then((m) => m.SettingsPage),
+  },
+  {
+    path: 'create',
+    loadComponent: () =>
+      import('./pages/create/create.page').then((m) => m.CreatePage),
+  },
+  {
+    path: 'create',
+    loadComponent: () =>
+      import('./pages/create/create.page').then((m) => m.CreatePage),
+  },
+  {
+    path: 'creations',
+    loadComponent: () =>
+      import('./pages/creations/creations.page').then((m) => m.CreationsPage),
   },
 ];
