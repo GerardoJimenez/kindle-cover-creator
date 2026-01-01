@@ -5,6 +5,9 @@
     "EXPORTS": "Exports",
     "CREATE": "Create"
   },
+  "CREATE": {
+    "TITLE": "Create"
+  },
   "SETTINGS": {
     "TITLE": "Settings",
     "LANGUAGE": "Language",

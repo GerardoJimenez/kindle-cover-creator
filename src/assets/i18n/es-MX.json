@@ -5,6 +5,12 @@
     "CREATIONS": "Creaciones",
     "CREATE": "Crear"
   },
+  "CREATE": {
+    "TITLE": "Crear Portada"
+  },
+  "CREATIONS": {
+    "TITLE": "Portadas creadas"
+  },
   "SETTINGS": {
     "TITLE": "Configuración",
     "LANGUAGE": "Idioma",
