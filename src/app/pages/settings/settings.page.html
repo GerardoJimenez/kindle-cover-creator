@@ -14,4 +14,10 @@
       </ion-select-option>
     </ion-select>
   </ion-item>
+
+  @if (consent.state.privacyOptionsRequired) {
+    <ion-button expand="block" (click)="openPrivacyOptions()">
+      {{ 'SETTINGS.PRIVACY_OPTIONS' | translate }}
+    </ion-button>
+  }
 </ion-content>

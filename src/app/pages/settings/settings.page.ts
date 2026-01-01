@@ -10,9 +10,11 @@ import {
   IonLabel,
   IonSelect,
   IonSelectOption,
+  IonButton,
 } from '@ionic/angular/standalone';
 import { Lang, LanguageService } from 'src/app/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { ConsentService } from 'src/app/services/consent.service';
 
 @Component({
   selector: 'app-settings',
@@ -33,12 +35,17 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
     IonSelect,
     IonSelectOption,
+    IonButton,
   ],
 })
 export class SettingsPage {
-  constructor(public lang: LanguageService) {}
+  constructor(public lang: LanguageService, public consent: ConsentService) {}
 
   onLangChange(v: string) {
     this.lang.set(v as Lang);
+  }
+
+  async openPrivacyOptions() {
+    await this.consent.showPrivacyOptionsIfAvailable();
   }
 }
