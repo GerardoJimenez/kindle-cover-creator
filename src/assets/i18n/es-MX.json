@@ -5,11 +5,41 @@
     "CREATIONS": "Creaciones",
     "CREATE": "Crear"
   },
+  "COMMON": { "CLOSE": "Cerrar" },
   "CREATE": {
-    "TITLE": "Crear Portada"
+    "TITLE": "Crear portada",
+    "SELECT_MODEL_LABEL": "Modelo de Kindle",
+    "SELECT_MODEL_PLACEHOLDER": "Selecciona tu modelo",
+    "MODEL_PICKER": {
+      "TITLE": "Elige tu Kindle",
+      "SEARCH": "Buscar modelo"
+    }
   },
   "CREATIONS": {
     "TITLE": "Portadas creadas"
+  },
+  "KINDLE_GROUPS": {
+    "BASIC": "Básico",
+    "PAPERWHITE": "Paperwhite",
+    "OASIS": "Oasis",
+    "SCRIBE": "Scribe",
+    "COLOR": "Color"
+  },
+  "KINDLE_MODELS": {
+    "KINDLE_BASIC_2019": "Kindle básico (2019 – 10ª gen)",
+    "KINDLE_BASIC_2022": "Kindle básico (2022 – 11ª gen)",
+    "KINDLE_BASIC_2024": "Kindle básico (2024)",
+    "PAPERWHITE_2015": "Kindle Paperwhite (2015 – 7ª gen)",
+    "PAPERWHITE_2018": "Kindle Paperwhite (2018 – 10ª gen)",
+    "PAPERWHITE_2021": "Kindle Paperwhite (2021 – 11ª gen)",
+    "PAPERWHITE_SIGNATURE_2021": "Paperwhite Signature Edition (2021)",
+    "PAPERWHITE_2024": "Kindle Paperwhite (2024 – 12ª gen)",
+    "PAPERWHITE_SIGNATURE_2024": "Paperwhite Signature Edition (2024)",
+    "OASIS_2017_2019": "Kindle Oasis (2017 / 2019)",
+    "SCRIBE_2022": "Kindle Scribe (2022)",
+    "SCRIBE_2024": "Kindle Scribe (2024)",
+    "COLORSOFT_SIGNATURE_2024": "Kindle Colorsoft Signature Edition (2024)",
+    "COLORSOFT_2025": "Kindle Colorsoft (2025)"
   },
   "SETTINGS": {
     "TITLE": "Configuración",

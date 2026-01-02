@@ -1,13 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{'CREATE.TITLE' | translate}}</ion-title>
+    <ion-title>{{ 'CREATE.TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{'CREATE.TITLE' | translate}}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-item button detail="false" (click)="openModelPicker()">
+    <ion-label>
+      <div class="field-title">
+        {{ 'CREATE.SELECT_MODEL_LABEL' | translate }}
+      </div>
+
+      <div class="field-value" *ngIf="selectedModel as m; else placeholder">
+        {{ m.i18nKey | translate }}
+        <span class="field-meta">· {{ m.width }} × {{ m.height }} px</span>
+      </div>
+
+      <ng-template #placeholder>
+        <div class="field-placeholder">
+          {{ 'CREATE.SELECT_MODEL_PLACEHOLDER' | translate }}
+        </div>
+      </ng-template>
+    </ion-label>
+
+    <ion-icon slot="end" name="chevron-down"></ion-icon>
+  </ion-item>
 </ion-content>
