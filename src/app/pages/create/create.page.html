@@ -25,4 +25,37 @@
 
     <ion-icon slot="end" name="chevron-down"></ion-icon>
   </ion-item>
+
+  <ion-item
+    button
+    detail="false"
+    class="ion-margin-top"
+    (click)="openImagePicker()"
+  >
+    <ion-label>
+      <div class="field-title">
+        {{ 'CREATE.SELECT_IMAGE_LABEL' | translate }}
+      </div>
+
+      <div class="field-value" *ngIf="selectedImageName; else imgPlaceholder">
+        {{ selectedImageName }}
+      </div>
+
+      <ng-template #imgPlaceholder>
+        <div class="field-placeholder">
+          {{ 'CREATE.SELECT_IMAGE_PLACEHOLDER' | translate }}
+        </div>
+      </ng-template>
+    </ion-label>
+
+    <ion-icon slot="end" name="image-outline"></ion-icon>
+  </ion-item>
+
+  <input
+    #imageInput
+    type="file"
+    accept="image/*"
+    hidden
+    (change)="onImageSelected($event)"
+  />
 </ion-content>

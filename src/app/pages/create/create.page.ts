@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -8,7 +8,6 @@ import {
   IonToolbar,
   IonItem,
   IonLabel,
-  IonButton,
   IonIcon,
 } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core';
@@ -23,7 +22,7 @@ import {
   KindleModelPickerComponent,
 } from '../../components/kindle-model-picker/kindle-model-picker.component';
 
-import { chevronDown } from 'ionicons/icons';
+import { chevronDown, imageOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
 @Component({
@@ -36,7 +35,6 @@ import { addIcons } from 'ionicons';
     FormsModule,
     TranslateModule,
     HttpClientModule,
-
     IonContent,
     IonHeader,
     IonTitle,
@@ -48,12 +46,17 @@ import { addIcons } from 'ionicons';
   providers: [ModalController],
 })
 export class CreatePage implements OnInit {
+  @ViewChild('imageInput') imageInput!: ElementRef<HTMLInputElement>;
+
   constructor(private http: HttpClient, private modalCtrl: ModalController) {
-    addIcons({ chevronDown });
+    addIcons({ chevronDown, imageOutline });
   }
 
   groups: KindleGroup[] = [];
   selectedModel?: KindleModel;
+
+  selectedImageFile?: File;
+  selectedImageName?: string;
 
   async ngOnInit() {
     this.groups = await firstValueFrom(
@@ -80,9 +83,22 @@ export class CreatePage implements OnInit {
     const res = await modal.onWillDismiss<KindleModel>();
     if (res.role === 'selected' && res.data) {
       this.selectedModel = res.data;
-      // aquí después conectamos el cropper
-      console.log('Modelo:', this.selectedModel);
     }
+  }
+
+  openImagePicker() {
+    this.imageInput.nativeElement.click();
+  }
+
+  onImageSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    this.selectedImageFile = file;
+    this.selectedImageName = file.name;
+
+    input.value = '';
   }
 
   private findModelById(id: string): KindleModel | undefined {
