@@ -5,7 +5,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-item button detail="false" (click)="openModelPicker()">
+  <ion-item
+    button
+    detail="false"
+    (click)="openModelPicker()"
+    aria-label="{{ 'CREATE.ARIA_SELECT_MODEL' | translate }}"
+  >
     <ion-label>
       <div class="field-title">
         {{ 'CREATE.SELECT_MODEL_LABEL' | translate }}
@@ -23,7 +28,7 @@
       </ng-template>
     </ion-label>
 
-    <ion-icon slot="end" name="chevron-down"></ion-icon>
+    <ion-icon slot="end" name="chevron-down" aria-hidden="true"></ion-icon>
   </ion-item>
 
   <ion-item
@@ -31,6 +36,14 @@
     detail="false"
     class="ion-margin-top"
     (click)="openImagePicker()"
+    [class.item-invalid]="!!imageErrorKey"
+    [attr.aria-invalid]="imageErrorKey ? 'true' : 'false'"
+    [attr.aria-describedby]="imageErrorKey ? 'image-error' : null"
+    [attr.aria-label]="
+      selectedImageName
+        ? ('CREATE.ARIA_CHANGE_IMAGE' | translate:{ name: selectedImageName })
+        : ('CREATE.ARIA_SELECT_IMAGE' | translate)
+    "
   >
     <ion-label>
       <div class="field-title">
@@ -39,6 +52,9 @@
 
       <div class="field-value" *ngIf="selectedImageName; else imgPlaceholder">
         {{ selectedImageName }}
+        <span class="field-meta">
+          · {{ 'CREATE.TAP_TO_CHANGE' | translate }}
+        </span>
       </div>
 
       <ng-template #imgPlaceholder>
@@ -48,8 +64,53 @@
       </ng-template>
     </ion-label>
 
-    <ion-icon slot="end" name="image-outline"></ion-icon>
+    <div
+      class="thumb-wrapper"
+      slot="end"
+      *ngIf="previewUrl && !imageErrorKey; else endIcon"
+      aria-hidden="true"
+    >
+      <div class="thumb">
+        <img [src]="previewUrl" alt="" />
+      </div>
+
+      <ion-icon
+        class="thumb-check"
+        name="checkmark-circle"
+      ></ion-icon>
+    </div>
+
+
+    <ng-template #endIcon>
+      <ion-icon
+        slot="end"
+        [name]="imageErrorKey ? 'alert-circle-outline' : 'image-outline'"
+        aria-hidden="true"
+      ></ion-icon>
+    </ng-template>
   </ion-item>
+
+  <div class="error-slot" [class.has-error]="!!imageErrorKey">
+    <div
+      id="image-error"
+      class="field-error"
+      *ngIf="imageErrorKey as key"
+      aria-live="polite"
+      role="status"
+    >
+      {{ key | translate:imageErrorParams }}
+    </div>
+  </div>
+
+  <ion-button
+    expand="block"
+    class="ion-margin-top"
+    [disabled]="!canCrop()"
+    (click)="startCrop()"
+    aria-label="{{ 'CREATE.ARIA_CROP' | translate }}"
+  >
+    {{ 'CREATE.CROP_ACTION' | translate }}
+  </ion-button>
 
   <input
     #imageInput
